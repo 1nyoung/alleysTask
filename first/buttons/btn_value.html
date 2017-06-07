@@ -1,0 +1,31 @@
+<!-- value값으로 바로 띄우도록 한것-->
+<html>
+<head>
+    <script type="text/javascript" language="javascript">
+        var count = 0;
+
+        function create(){
+            for (var i = 0; i < 4; i++) {
+                var newdiv = document.createElement("div");
+                newdiv.innerHTML = "<input type = 'button' value = " + count +" onclick = 'num(this.value)''>";
+                document.getElementById('contents').appendChild(newdiv);
+                count+=1;
+            }
+        }
+
+        function num(value){
+            // return function() {
+            //   	alert(value);
+            // 		};
+            alert(value);
+        }
+    </script>
+</head>
+
+<body>
+<div id="contents"> </div>
+
+<input type="button" value = "버튼추가" onclick="create()"/>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- 다이렉트로 리스너 달아주고 거기서 클로저 개념 사용 -->
+<html>
+<head>
+    <script type="text/javascript" language="javascript">
+        var count = 0;
+        console.log("START");
+
+        function create(){
+            for (var i = 0; i < 4; i++) {
+
+                var newdiv = document.createElement("div");
+                newdiv.innerHTML = "<input type = 'button' value = " + count +">";
+
+                (function(m){
+                    newdiv.addEventListener('click', function(event){
+                        alert(m);
+                    })
+                })(count);
+                document.getElementById('contents').appendChild(newdiv);
+                count+=1;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+<div id="contents"> </div>
+
+<input type="button" value = "버튼추가" onclick="create()"/>
+
+</body>
+</html>

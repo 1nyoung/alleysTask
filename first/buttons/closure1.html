@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<script>
+    var arr = []
+    console.log("START");
+    for(var i = 0; i < 5; i++){
+        arr[i] = function(id){
+            console.log("A");
+            console.log("i ===> "+i);
+            return function(){
+                console.log("B");
+                console.log("id ===> "+id);
+                return id;
+            }
+        }(i);
+// console.log("[for문]arr ===> "+arr[i]());
+    }
+    console.log("[for문 END]FINAL return값 i ===> "+i);
+    console.log("[for/in문 START]");
+    for(var index in arr) {
+        console.log("C");
+        console.log("index ====> "+index);
+        console.log("arr ===> "+arr[index]());
+    }
+</script>
+</body>
+</html>

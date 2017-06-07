@@ -1,0 +1,39 @@
+<!-- 배열을 따로 만들어놓고 클릭할때마다 배열을 실행시키면서 띄우도록-->
+<html>
+<head>
+    <script type="text/javascript" language="javascript">
+        var count = 0;
+        var arr = [];
+        console.log("START");
+
+        function create(){
+            for (var i = 0; i < 4; i++) {
+                arr[count] = (function(id){
+                    console.log("A");
+                    console.log("count ===> "+count);
+                    return function(){
+                        console.log("B");
+                        console.log("id ===> "+id);
+                        return id;
+                    }
+                })(count);
+                console.log("arr[0]===> "+arr[0]);
+                var newdiv = document.createElement("div");
+                newdiv.innerHTML = "<input type = 'button' id = " + count +" value = " + count +">";
+                newdiv.addEventListener('click', function(event){
+                    alert(arr[event.target.value]());
+                });
+                document.getElementById('contents').appendChild(newdiv);
+                count+=1;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="contents"> </div>
+
+<input type="button" value = "버튼추가" onclick="create()"/>
+
+</body>
+</html>
